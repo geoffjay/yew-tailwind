@@ -1,0 +1,10 @@
+[package]
+name = "demo"
+version = "0.1.0"
+authors = ["Geoff Johnson <geoff.jay@gmail.com>"]
+edition = "2021"
+license = "MIT"
+
+[dependencies]
+yew = "0.19.3"
+yew-tailwind = { path = "../../lib" }

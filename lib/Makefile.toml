@@ -1,0 +1,18 @@
+[tasks.native-test]
+command = "cargo"
+toolchain = "1.56"
+args = ["test", "native_"]
+
+[tasks.test]
+dependencies = ["native-test"]
+extend = "core::wasm-pack-base"
+command = "wasm-pack"
+args = ["test"]
+
+[tasks.doc-test]
+clear = true
+run_task = { name = ["doc-test-normal"], fork = true }
+
+[tasks.doc-test-normal]
+command = "cargo"
+args = ["test", "--doc"]

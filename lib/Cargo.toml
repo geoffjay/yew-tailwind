@@ -1,0 +1,21 @@
+[lib]
+name = "yew-tailwind"
+version = "0.1.0"
+edition = "2021"
+authors = ["Geoff Johnson <geoff.jay@gmail.com>"]
+repository = "https://github.com/geoffjay/yew-tailwind"
+homepage = "https://github.com/geoffjay/yew-tailwind"
+documentation = "https://docs.rs/yew-tailwind/"
+license = "MIT"
+keywords = ["web", "webasm", "javascript"]
+categories = ["gui", "wasm", "web-programming"]
+description = "A Yew component library for Tailwind CSS"
+readme = "../../README.md"
+rust-version = "1.56.0"
+
+# [lib]
+# crate-type = ["rlib", "cdylib"]
+
+[dependencies]
+# wasm-bindgen = "0.2"
+yew = "0.19.3"

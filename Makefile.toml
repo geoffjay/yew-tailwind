@@ -1,0 +1,70 @@
+######################
+#
+# public tasks:
+# * pr-flow
+# * lint
+# * lint-release
+# * tests
+#
+# Run `cargo make --list-all-steps` for more details.
+#
+######################
+[config]
+min_version = "0.32.4"
+default_to_workspace = false
+
+[env]
+CARGO_MAKE_EXTEND_WORKSPACE_MAKEFILE = true
+CARGO_MAKE_CLIPPY_ARGS = "-- --deny=warnings"
+
+[config.modify_core_tasks]
+private = true
+namespace = "core"
+
+[tasks.pr-flow]
+toolchain = "stable"
+category = "Checks"
+description = "Lint and test"
+run_task = { name = ["lint", "lint-release", "tests"], fork = true }
+
+[tasks.lint]
+category = "Checks"
+description = "Check formatting and run Clippy"
+run_task = { name = ["lint-flow"], fork = true }
+
+[tasks.tests]
+category = "Testing"
+description = "Run all tests"
+env = { CARGO_MAKE_WORKSPACE_SKIP_MEMBERS = ["**/examples/*"] }
+run_task = { name = ["test-flow", "doc-test-flow"], fork = true }
+
+[tasks.lint-flow]
+private = true
+workspace = true
+dependencies = ["core::check-format-flow", "core::clippy-flow"]
+
+[tasks.lint-release]
+category = "Checks"
+workspace = true
+command = "cargo"
+args = ["clippy", "--all-targets", "--release", "--", "--deny=warnings"]
+
+[tasks.test-flow]
+private = true
+workspace = true
+dependencies = ["test"]
+
+[tasks.test]
+private = true
+command = "cargo"
+args = ["test", "--all-targets"]
+
+[tasks.doc-test-flow]
+private = true
+workspace = true
+dependencies = ["doc-test"]
+
+[tasks.doc-test]
+private = true
+command = "cargo"
+args = ["test", "--doc"]

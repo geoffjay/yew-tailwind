@@ -6,3 +6,5 @@ Cargo.lock
 
 /coverage
 /target
+
+/**/dist

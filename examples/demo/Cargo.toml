@@ -7,4 +7,4 @@ license = "MIT"
 
 [dependencies]
 yew = "0.19.3"
-yew-tailwind = { path = "../../lib" }
+yew_tailwind = { path = "../../lib" }

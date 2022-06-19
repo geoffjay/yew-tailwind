@@ -1,6 +1,6 @@
 use yew::{function_component, html, Children, Classes, NodeRef, Properties};
 
-use crate::tailwind::DisplayProps;
+use crate::tailwind::{BorderProps, DisplayProps};
 
 #[derive(Clone, Debug, PartialEq, Properties)]
 pub struct BaseProps {
@@ -13,6 +13,8 @@ pub struct BaseProps {
     #[prop_or_default]
     pub inner_ref: NodeRef,
 
+    #[prop_or_default]
+    pub border: Option<BorderProps>,
     #[prop_or_default]
     pub display: Option<DisplayProps>,
 
@@ -36,6 +38,10 @@ pub fn base(props: &BaseProps) -> Html {
 
     if let Some(display) = &props.display {
         classes.push(Vec::from(display));
+    }
+
+    if let Some(border) = &props.border {
+        classes.push(Vec::from(border));
     }
 
     // if let Some(p) = &props.p {

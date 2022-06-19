@@ -1,7 +1,7 @@
 use yew::{function_component, html, props, Children, Classes, Properties};
 
-use crate::primitives::Base;
-use crate::tailwind::DisplayProps;
+use crate::primitives::{Base, BaseProps};
+use crate::tailwind::{BorderProps, DisplayProps};
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct BoxProps {
@@ -14,6 +14,8 @@ pub struct BoxProps {
 
     #[prop_or_default]
     pub display: Option<DisplayProps>,
+    #[prop_or_default]
+    pub border: Option<BorderProps>,
 
     #[prop_or(false)]
     pub inline: bool,
@@ -32,13 +34,15 @@ pub fn _box(props: &BoxProps) -> Html {
     classes.push(&props.classes);
 
     let display = props.display.as_ref().cloned();
+    let border = props.border.as_ref().cloned();
 
     let base_props = props! {
-        crate::primitives::base::BaseProps {
+        BaseProps {
             is: el,
             classes: classes,
             inline: props.inline,
             inline_block: props.inline_block,
+            border: border,
             display: display,
         }
     };

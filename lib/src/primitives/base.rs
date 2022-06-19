@@ -35,7 +35,7 @@ pub fn base(props: &BaseProps) -> Html {
     classes.push(&props.classes);
 
     if let Some(display) = &props.display {
-        classes.push(format!("{}", display));
+        classes.push(Vec::from(display));
     }
 
     // if let Some(p) = &props.p {

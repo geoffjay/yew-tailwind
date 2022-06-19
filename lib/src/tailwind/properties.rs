@@ -20,31 +20,39 @@ pub struct DisplayProps {
     pub table_row: bool,
 }
 
-impl fmt::Display for DisplayProps {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+impl From<&DisplayProps> for Vec<String> {
+    fn from(dp: &DisplayProps) -> Vec<String> {
         let mut vec = Vec::new();
-        if self.block {
-            vec.push("block");
+
+        if dp.block {
+            vec.push("block".to_string());
         }
-        if self.hidden {
-            vec.push("hidden")
+        if dp.hidden {
+            vec.push("hidden".to_string());
         }
-        if self.inline {
-            vec.push("inline")
+        if dp.inline {
+            vec.push("inline".to_string());
         }
-        if self.inline_block {
-            vec.push("inline-block")
+        if dp.inline_block {
+            vec.push("inline-block".to_string());
         }
-        if self.table {
-            vec.push("table")
+        if dp.table {
+            vec.push("table".to_string());
         }
-        if self.table_cell {
-            vec.push("table-cell")
+        if dp.table_cell {
+            vec.push("table-cell".to_string());
         }
-        if self.table_row {
-            vec.push("table-row")
+        if dp.table_row {
+            vec.push("table-row".to_string());
         }
 
+        vec
+    }
+}
+
+impl fmt::Display for DisplayProps {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        let vec = Vec::from(self);
         write!(f, "{}", vec.join(" "))
     }
 }

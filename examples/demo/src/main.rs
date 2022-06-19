@@ -18,6 +18,10 @@ fn boxes() -> Html {
         }
     };
 
+    let hidden = props!{
+        DisplayProps { hidden: true }
+    };
+
     html! {
         <>
             <Box display={display}>
@@ -26,7 +30,7 @@ fn boxes() -> Html {
             <Box>
                 <Box is={"div"}>
                 </Box>
-                <Box is={"span"}>
+                <Box is={"span"} display={hidden}>
                 </Box>
             </Box>
         </>

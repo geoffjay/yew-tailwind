@@ -1,4 +1,4 @@
-use yew::{function_component, html, Children, Classes, Properties, props};
+use yew::{function_component, html, props, Children, Classes, Properties};
 
 use crate::primitives::Base;
 use crate::tailwind::DisplayProps;

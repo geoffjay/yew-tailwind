@@ -1,4 +1,4 @@
-use yew::{function_component, html};
+use yew::{function_component, html, Html};
 
 #[function_component(Image)]
 pub fn image() -> Html {

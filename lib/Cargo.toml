@@ -1,5 +1,5 @@
 [package]
-name = "yew_tailwind"
+name = "yew-tailwind"
 version = "0.1.0"
 edition = "2021"
 authors = ["Geoff Johnson <geoff.jay@gmail.com>"]
@@ -10,12 +10,11 @@ license = "MIT"
 keywords = ["web", "webasm", "javascript"]
 categories = ["gui", "wasm", "web-programming"]
 description = "A Yew component library for Tailwind CSS"
-readme = "../../README.md"
-rust-version = "1.56.0"
+readme = "../README.md"
 
-# [lib]
-# crate-type = ["rlib", "cdylib"]
+[lib]
+crate-type = ["rlib", "cdylib"]
+name = "yew_tailwind"
 
 [dependencies]
-gloo-utils = "0.1.3"
-yew = "0.19.3"
+yew = { version = "0.21", features = ["csr"] }
